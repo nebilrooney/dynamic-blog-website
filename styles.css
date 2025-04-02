@@ -7,3 +7,25 @@ a {
  text-decoration: none;
  color: darkblue;
 }
+
+
+@media (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+  
+    input, textarea {
+      width: 100%;
+      font-size: 1rem;
+    }
+  
+    h1, h2 {
+      font-size: 1.2rem;
+    }
+  
+    button {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  
