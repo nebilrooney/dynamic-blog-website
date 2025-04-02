@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>View/Edit Post</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="post"></div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+    const posts = JSON.parse(localStorage.getItem('posts')) || [];
+    const post = posts[id];
+    const div = document.getElementById('post');
+
+    if (post) {
+      div.innerHTML = `
+        <h1 contenteditable="true" id="title">${post.title}</h1>
+        <p contenteditable="true" id="content">${post.content}</p>
+        <button onclick="saveEdit(${id})">Save</button>
+      `;
+    } else {
+      div.innerHTML = "<p>Post not found.</p>";
+    }
+
+    function saveEdit(index) {
+      posts[index].title = document.getElementById('title').innerText;
+      posts[index].content = document.getElementById('content').innerText;
+      localStorage.setItem('posts', JSON.stringify(posts));
+      alert('Post updated!');
+    }
+  </script>
+</body>
+</html>
