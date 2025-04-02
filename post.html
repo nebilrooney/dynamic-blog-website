@@ -21,7 +21,9 @@
         <h1 contenteditable="true" id="title">${post.title}</h1>
         <p contenteditable="true" id="content">${post.content}</p>
         <button onclick="saveEdit(${id})">Save</button>
-      `;
+       <button onclick="deletePost(${id})"
+       style= margin-left: 10px; ">Delete</button>"
+       `;
     } else {
       div.innerHTML = "<p>Post not found.</p>";
     }
@@ -31,6 +33,16 @@
       posts[index].content = document.getElementById('content').innerText;
       localStorage.setItem('posts', JSON.stringify(posts));
       alert('Post updated!');
+     
+      function deletePost(index) {
+  if (confirm("Are you sure you want to delete this post?")) {
+    posts.splice(index, 1);
+    localStorage.setItem('posts', JSON.stringify(posts));
+    alert("Post deleted.");
+    location.href = 'index.html';
+  }
+}
+     
     }
   </script>
 </body>
