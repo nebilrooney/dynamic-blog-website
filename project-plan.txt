@@ -1,0 +1,3 @@
+Pages: index.html, new-post.html, post.html
+Features: Create, Read, Update, Delete (CRUD)
+Storage: localStorage
